@@ -16,7 +16,7 @@ const Success = () => {
         <p >Check your email inbox for the receipt.</p>
         <p >
           To submit a new form click &nbsp;
-          <a  href="https://localhost:3000">
+          <a  href="https://forms-plum.netlify.app/">
              here         
           </a>
         </p>
