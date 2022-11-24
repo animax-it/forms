@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.slider {
+  color: #20b2aa;
+}
+
+.slider:hover {
+  color: #2e8b57;
+}
+
+.planHead {
+  margin-top: 80px;
+}
+
+.amount{
+  margin-left: 70px;
+  margin-top: 30px;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

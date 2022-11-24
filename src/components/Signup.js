@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import Amount from './Amount';
+import { userSchema } from '../Validations/UserValidation';
+import* as yup from "yup";
 import Declaration from './Declaration';
 import Plan from './Plan';
 import Review from './Review';
+import Success from './Success';
 
 export default class Signup extends Component {
 
@@ -97,12 +100,23 @@ export default class Signup extends Component {
                 <Declaration 
                 prevStep={ this.prevStep }
                 nextStep={ this.nextStep }
+                handleChange={ this.handleChange }
                 values={ values }
                 />
             )
         case 4: 
             return (
-                <Review />
+                <Review 
+                prevStep={ this.prevStep }
+                nextStep={ this.nextStep }
+                handleChange={ this.handleChange }
+                values={ values }/>
+            )
+
+        case 5: 
+            return (
+                <Success />
+                
             )
         default: 
             // do nothing
