@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react'
-import { Button, AppBar, Box, CssBaseline, Paper, BottomNavigation, BottomNavigationAction, Grid } from '@material-ui/core'
-import ArchiveIcon from '@mui/icons-material/Archive';
-import { userSchema } from '../Validations/UserValidation';
-import { Formik, Field, Form } from 'formik';
+import React from 'react'
+import { Button, AppBar, Grid } from '@material-ui/core'
+
+import { userSchema, amtSchema, decSchema } from '../Validations/UserValidation';
+import { Formik } from 'formik';
 
 
-const BottomNav = ({nextStep, prevStep, handleChange, step, values}) => {
+const BottomNav = ({nextStep, step, values}) => {
 
   const createUser = async () => {
+    var isValid = false;
+    var formData = {}
     switch(step) {
       case 1: 
-        var formData = {
+       formData = {
           email: values.email,
           phone: values.phone,
           addressOne : values.addressOne,
@@ -19,22 +21,45 @@ const BottomNav = ({nextStep, prevStep, handleChange, step, values}) => {
           state : values.state,
           planType : values.planType
       }
-    }
-    switch(step) {
+        isValid = await userSchema.isValid(formData);
+        break;
+
       case 2: 
-        var formData = {
-          amount : ''
-        }}
-    const isValid = await userSchema.isValid(formData);
-    console.log(typeof isValid);
+         formData = {
+          amount : values.amount
+        }
+       isValid = await amtSchema.isValid(formData);
+       break;
+
+       case 3: 
+         formData = {
+          declarationOne : values.declarationOne,
+          declarationTwo : values.declarationTwo,
+          declarationThree : values.declarationThree,
+          declarationFour : values.declarationFour,
+        }
+       isValid = await decSchema.isValid(formData);
+       break;
+
+       default: 
+       isValid = true
+    }
     return isValid;
-  }
+    
+      
+       }
+    
+  
+  
   const Continue = async (e) => {
    
     e.preventDefault()
     const isValid = await createUser();
-    console.log(typeof isValid)
-    if(isValid == true) {nextStep()}
+    console.log( isValid)
+    if(isValid === true) {nextStep()}
+    else {
+      alert('Please enter all the details correctly, one or more of the fields are missing or invalid.')
+    }
     
   } 
   
@@ -67,7 +92,7 @@ const BottomNav = ({nextStep, prevStep, handleChange, step, values}) => {
     <Grid container justifyContent="flex-end">
       <Grid item >
           
-     <Button className='button' variant="contained" onClick= {Continue} style={{   backgroundColor: 'aqua' ,height: "50px", width: "150px"}}>NEXT</Button>
+        <Button className='button' variant="contained" onClick= {Continue} style={{   backgroundColor: 'aqua' ,height: "50px", width: "150px"}}>{step === 4 ? "SUBMIT" : "NEXT"}</Button>
      
       </Grid>
     </Grid>

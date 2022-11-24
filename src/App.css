@@ -45,11 +45,12 @@
   color: #2e8b57;
 }
 
-.planHead {
+.marginAndPadding {
   margin-top: 80px;
+  padding-bottom: 40px;
 }
 
-.amount{
+.marginLeftAndTop{
   margin-left: 70px;
   margin-top: 30px;
 }

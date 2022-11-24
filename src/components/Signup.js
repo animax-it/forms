@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Amount from './Amount';
-import { userSchema } from '../Validations/UserValidation';
-import* as yup from "yup";
 import Declaration from './Declaration';
 import Plan from './Plan';
 import Review from './Review';
 import Success from './Success';
 
-export default class Signup extends Component {
+export default class Signup  extends Component {
 
     state = {
         step : 1,
@@ -44,7 +42,9 @@ export default class Signup extends Component {
         this.setState({ [input]: e.target.value });
     }
 
-    
+    handleChecked = input => e => {
+        this.setState({ [input]: e.target.checked });
+    }
 
   render() {
     
@@ -63,6 +63,7 @@ export default class Signup extends Component {
             declarationTwo,
             declarationThree,
             declarationFour } = this.state;
+            
         const values = {  planType,
             email,
             name,
@@ -102,7 +103,7 @@ export default class Signup extends Component {
                 <Declaration 
                 prevStep={ this.prevStep }
                 nextStep={ this.nextStep }
-                handleChange={ this.handleChange }
+                handleChecked={ this.handleChecked }
                 values={ values }
                 step = {step}
                 />

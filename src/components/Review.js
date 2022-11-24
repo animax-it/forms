@@ -2,8 +2,8 @@ import React from 'react'
 import BottomNav from './BottomNav'
 import { ChevronLeft } from '@mui/icons-material'
 import NavBar from './NavBar'
-import { Container, Grid, FormGroup, Checkbox, FormControlLabel, TextField, Typography, Accordion,FormControl,InputLabel, Select, MenuItem, AccordionSummary, AccordionDetails } from '@material-ui/core'
-const Review = ({nextStep, prevStep, handleChange, step, values}) => {
+import { Container, Grid, Typography } from '@material-ui/core'
+const Review = ({nextStep, prevStep, step, values}) => {
   const getPlanType = (planType) => {
     switch(planType) {
       case 'One':
@@ -16,10 +16,12 @@ const Review = ({nextStep, prevStep, handleChange, step, values}) => {
         return 'Floater'
       case 'Grand':
         return 'Floater + Individual'
+      default:
+        return ''
     }
   }
   return (
-    <Container className = "planHead" component = 'main' >
+    <Container className = "marginAndPadding" component = 'main' >
       <NavBar
        nextStep = {nextStep}
        values = {values}
@@ -42,23 +44,19 @@ const Review = ({nextStep, prevStep, handleChange, step, values}) => {
             <Grid item xs={4} sm={4}><Typography>Plan Type</Typography></Grid>
             <Grid item xs={8} sm={8}><Typography align='left'>{getPlanType(values.planType)}</Typography></Grid>
             <Grid item xs={4} sm={4}><Typography>Deductible Amount</Typography></Grid>
-            <Grid item xs={8} sm={8}><Typography align='left'>Rs. {values.amount/20}L</Typography></Grid>
+            <Grid item xs={8} sm={8}><Typography align='left'>&#8377;. {values.amount/20}L</Typography></Grid>
             <Grid item xs={4} sm={4}><Typography>GST(18%)</Typography></Grid>
-            <Grid item xs={8} sm={8}><Typography align='left'>Rs. {(values.amount/20)*18000}</Typography></Grid>
+            <Grid item xs={8} sm={8}><Typography align='left'>&#8377;. {(values.amount/20)*18000}</Typography></Grid>
             <Grid item xs={4} sm={4}><Typography>Premium</Typography></Grid>
-            <Grid item xs={8} sm={8}><Typography align='left'>Rs. {(values.amount/20)*1.18}L</Typography></Grid>
+            <Grid item xs={8} sm={8}><Typography align='left'>&#8377;. {(values.amount/20)*1.18}L</Typography></Grid>
             </Grid>
-          
-
-          
-
-
       </Grid>
       </Grid>
       <BottomNav
        nextStep = {nextStep}
        prevStep = {prevStep}
-       values = {values}/>
+       values = {values}
+       step = {step}/>
     </Container>
   )
 }
