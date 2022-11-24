@@ -48,7 +48,7 @@ const Review = ({nextStep, prevStep, step, values}) => {
             <Grid item xs={4} sm={4}><Typography>GST(18%)</Typography></Grid>
             <Grid item xs={8} sm={8}><Typography align='left'>&#8377;. {(values.amount/20)*18000}</Typography></Grid>
             <Grid item xs={4} sm={4}><Typography>Premium</Typography></Grid>
-            <Grid item xs={8} sm={8}><Typography align='left'>&#8377;. {(values.amount/20)*1.18}L</Typography></Grid>
+            <Grid item xs={8} sm={8}><Typography align='left'>&#8377;. {Math.round((values.amount/20)*1.18*100)/100}L</Typography></Grid>
             </Grid>
       </Grid>
       </Grid>
