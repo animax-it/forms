@@ -15,14 +15,15 @@ const Success = () => {
 
   return (
     <div >
-      <div >
+      <div className = "planHead" >
         
-        <h2>Your form is submitted !!! </h2>
+        <h1 >Your form is submitted !!! </h1>
         <p >Check your email inbox for the receipt.</p>
         <p >
-          If you have any questions, please email
+          If you have any questions, please email : 
           <a  href="animesh.sharmag10@gmail.com">
-          animesh.sharmag10@gmail.com          </a>
+             animesh.sharmag10@gmail.com          
+          </a>
         </p>
         
       </div>

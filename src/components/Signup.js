@@ -84,6 +84,7 @@ export default class Signup extends Component {
                 nextStep={ this.nextStep }
                 handleChange={ this.handleChange }
                 values={ values }
+                step = {step}
             />
             )
         case 2: 
@@ -93,6 +94,7 @@ export default class Signup extends Component {
                 nextStep={ this.nextStep }
                 handleChange={ this.handleChange }
                 values={ values }
+                step = {step}
             />
             )
         case 3: 
@@ -102,6 +104,7 @@ export default class Signup extends Component {
                 nextStep={ this.nextStep }
                 handleChange={ this.handleChange }
                 values={ values }
+                step = {step}
                 />
             )
         case 4: 
@@ -110,7 +113,10 @@ export default class Signup extends Component {
                 prevStep={ this.prevStep }
                 nextStep={ this.nextStep }
                 handleChange={ this.handleChange }
-                values={ values }/>
+                values={ values }
+                step = {step}
+                />
+                
             )
 
         case 5: 

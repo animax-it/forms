@@ -1,8 +1,9 @@
 import React from 'react'
 import BottomNav from './BottomNav'
 import { ChevronLeft } from '@mui/icons-material'
+import NavBar from './NavBar'
 import { Container, Grid, FormGroup, Checkbox, FormControlLabel, TextField, Typography, Accordion,FormControl,InputLabel, Select, MenuItem, AccordionSummary, AccordionDetails } from '@material-ui/core'
-const Review = ({nextStep, prevStep, handleChange, values}) => {
+const Review = ({nextStep, prevStep, handleChange, step, values}) => {
   const getPlanType = (planType) => {
     switch(planType) {
       case 'One':
@@ -18,11 +19,16 @@ const Review = ({nextStep, prevStep, handleChange, values}) => {
     }
   }
   return (
-    <Container component = 'main' >
+    <Container className = "planHead" component = 'main' >
+      <NavBar
+       nextStep = {nextStep}
+       values = {values}
+       step = {step} 
+       />
       <Grid container spacing = {2}>
         
       <Grid item xs={1} sm={1}>
-      <ChevronLeft onClick= {prevStep}/>
+      <ChevronLeft fontSize="large"  onClick= {prevStep}/>
       </Grid>
           <Grid item xs={11} sm={11} >
           <Typography variant="h4" gutterBottom align="left" style={{ fontWeight: 600 }} >
@@ -51,7 +57,8 @@ const Review = ({nextStep, prevStep, handleChange, values}) => {
       </Grid>
       <BottomNav
        nextStep = {nextStep}
-       prevStep = {prevStep}/>
+       prevStep = {prevStep}
+       values = {values}/>
     </Container>
   )
 }

@@ -1,4 +1,4 @@
-import { Container, Grid, TextField, Typography, Accordion,FormControl,InputLabel, Select, MenuItem, AccordionSummary, AccordionDetails, FormControlLabel, Checkbox } from '@material-ui/core'
+import { Container, Grid, TextField, Typography, Accordion,FormControl,InputLabel, Select, MenuItem, BottomNavigation, BottomNavigationAction, AccordionSummary, AccordionDetails, FormControlLabel, Checkbox } from '@material-ui/core'
 import React from 'react'
 import { userSchema } from '../Validations/UserValidation';
 import* as yup from "yup";
@@ -7,14 +7,22 @@ import Divider from '@mui/material/Divider';
 import { SvgIcon } from '@material-ui/core';
 import BottomNav from './BottomNav'
 import FormPreview from './FormPreview';
+import NavBar from './NavBar'
 import '../App.css'
 
-const Plan = ({nextStep, handleChange, values}) => {
+const Plan = ({nextStep, handleChange, step, values}) => {
   
   return (
-    <Container className = "planHead" component = 'main' >
+    
+    <Container className = "planHead" component = 'main' style={{    width: "100vw"
+    }} >
+      <NavBar
+       nextStep = {nextStep}
+       values = {values}
+       step = {step} 
+       />
+      
        <Grid container spacing = {2} >
-       
        <Grid item xs={12} sm={8}>
        <Grid item xs={12} sm={12}>
        <Typography  variant="h4" gutterBottom align="left" style={{ fontWeight: 600 }}>
@@ -300,13 +308,14 @@ const Plan = ({nextStep, handleChange, values}) => {
           <FormPreview 
           values = {values}/>
     </Grid>
-    </Grid>
     <BottomNav
        nextStep = {nextStep}
        values = {values}
-
-       
+       step = {step}
        />
+    
+    </Grid>
+       
     </Container>
   )
 }

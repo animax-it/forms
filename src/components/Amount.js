@@ -7,8 +7,9 @@ import { ChevronLeft } from '@mui/icons-material';
 import BottomNav from './BottomNav';
 import FormPreview from './FormPreview';
 import '../App.css'
+import NavBar from './NavBar'
 
-const Amount = ({nextStep,prevStep, handleChange, values}) => {
+const Amount = ({nextStep,prevStep, handleChange, values, step}) => {
   const deductible = [
     {
       value: 20,
@@ -34,11 +35,17 @@ const Amount = ({nextStep,prevStep, handleChange, values}) => {
   
   return (
     <Container className = "planHead" component = 'main' >
+       <NavBar
+       nextStep = {nextStep}
+       values = {values}
+       step = {step} 
+       />
+      
        <Grid container spacing = {2} >
        <Grid item xs={12} sm={8}>
        <Grid container spacing = {2} >
       <Grid item xs={1} sm={1}>
-      <ChevronLeft onClick= {prevStep}/>
+      <ChevronLeft fontSize="large" onClick= {prevStep}/>
       </Grid>
        <Grid item xs={11} sm={11}>
        <Typography variant="h4" gutterBottom align="left" style={{ fontWeight: 600 }} >
@@ -103,7 +110,9 @@ const Amount = ({nextStep,prevStep, handleChange, values}) => {
        </Grid>
        <BottomNav
        nextStep = {nextStep}
-       prevStep = {prevStep}/>
+       prevStep = {prevStep}
+       values = {values}
+       step = {step}/>
     </Container>
   )
 }
